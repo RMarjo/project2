@@ -1,4 +1,4 @@
-package com.example.mrenaud.mesrecettesdecrepes;
+package com.example.mrenaud.mesrecettesdecrepes.model;
 
 public class Timers {
     int timer;

@@ -7,40 +7,56 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.Collections;
+import com.example.mrenaud.mesrecettesdecrepes.interfaces.ItemClickListener;
+import com.example.mrenaud.mesrecettesdecrepes.model.Recipes;
+
+import java.util.ArrayList;
 import java.util.List;
 
-public class RecipesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
+public class RecipesAdapter extends RecyclerView.Adapter<RecipesListViewHolder>{
 
     private Context context;
-    private LayoutInflater inflater;
-    List<Recipes> recipes = Collections.emptyList();
+    private List<Recipes> recipes;
+    ItemClickListener itemClickListener;
 
-    public RecipesAdapter(Context context, List<Recipes> recipes){
+    public RecipesAdapter(Context context, ItemClickListener itemClickListener){
         this.context = context;
-        inflater=LayoutInflater.from(context);
-        this.recipes=recipes;
+        this.recipes=new ArrayList <>();
+        //TODO keep ref to listener
+        this.itemClickListener = itemClickListener;
     }
 
 
     @NonNull
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int itemType) {
-        View view = inflater.inflate(R.layout.one_recipe_list, parent, false);
-        RecipesListViewHolder holder= new RecipesListViewHolder(view);
-        return holder;
+    public RecipesListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int itemType) {
+        View view = LayoutInflater.from(context).inflate(R.layout.one_recipe_list, parent, false);
+        return new RecipesListViewHolder(view);
     }
 
 
 
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position){
+    public void onBindViewHolder(@NonNull RecipesListViewHolder holder, int position){
 
-        RecipesListViewHolder recipesListViewHolder=(RecipesListViewHolder) holder;
-        Recipes current=recipes.get(position);
-        recipesListViewHolder.bind(current);
+        final Recipes current=recipes.get(position);
+        holder.bind(current);
+
 
 
         ///////*******************//////
+        //TODO set kept listener
+        holder.setClickListener(itemClickListener);
+    }
+
+    public String getItemIdAtPosition(int position){
+        //TODO check if position is OK
+        return recipes.get(position).getId();
+    }
+
+    public void setItemList(List<Recipes> recipesList){
+        recipes.clear();
+        recipes.addAll(recipesList);
+        notifyDataSetChanged();
     }
 
     public int getItemCount(){

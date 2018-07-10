@@ -1,4 +1,4 @@
-package com.example.mrenaud.mesrecettesdecrepes;
+package com.example.mrenaud.mesrecettesdecrepes.model;
 
 import java.util.List;
 
@@ -14,7 +14,7 @@ public class Recipes {
     public Recipes() {
     }
 
-    public Recipes( String name){
+    public Recipes( String id, String name, List<Ingredient> ingredient, List<Steps> steps, List <Timers> timers, String imageURL ){
             this.id =id;
             this.name = name;
             this.ingredient=ingredient;
