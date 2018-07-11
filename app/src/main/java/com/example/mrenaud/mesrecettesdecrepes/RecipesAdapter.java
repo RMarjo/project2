@@ -13,6 +13,8 @@ import com.example.mrenaud.mesrecettesdecrepes.model.Recipes;
 import java.util.ArrayList;
 import java.util.List;
 
+// L'Adapter, c'est lui qui passe le sel entre les Recipes & le viewholder( qui savent ce qu'elles contiennent mais vide et qui savent quand les actions sont sencés se produire) et l'Activity qui sait ce qui se passent quand des actions sont faites.
+
 public class RecipesAdapter extends RecyclerView.Adapter<RecipesListViewHolder>{
 
     private Context context;

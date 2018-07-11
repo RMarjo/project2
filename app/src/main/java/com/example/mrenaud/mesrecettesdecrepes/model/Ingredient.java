@@ -1,5 +1,7 @@
 package com.example.mrenaud.mesrecettesdecrepes.model;
 
+// class contenant nos Ingredient
+
 public class Ingredient {
     String quantity;
     String name;

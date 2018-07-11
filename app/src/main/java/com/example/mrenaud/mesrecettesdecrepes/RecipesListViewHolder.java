@@ -1,6 +1,7 @@
 package com.example.mrenaud.mesrecettesdecrepes;
 
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -48,7 +49,7 @@ public class RecipesListViewHolder extends RecyclerView.ViewHolder {
         textNameView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                itemClickListener.onTextClick(getAdapterPosition());
+                itemClickListener.onRecipeTextClick(getAdapterPosition());
             }
         });
         imageView.setOnClickListener(new View.OnClickListener() {
